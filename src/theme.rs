@@ -10,6 +10,16 @@ impl CmdScheme for SimpleTheme {
 	const CMD_PASSED_FG: Color = Color(15);
 }
 
+impl TimeScheme for SimpleTheme {
+	const TIME_BG: Color = Color(240);
+	const TIME_FG: Color = Color(250);
+}
+
+impl KubeScheme for SimpleTheme {
+	const KUBE_BG: Color = Color(19);
+	const KUBE_FG: Color = Color(250);
+}
+
 impl CwdScheme for SimpleTheme {
 	const CWD_FG: Color = Color(254);
 	const HOME_BG: Color = Color(31);
@@ -44,8 +54,8 @@ impl GitScheme for SimpleTheme {
 	const GIT_CONFLICTED_FG: Color = Color(15);
 	const GIT_NOTSTAGED_BG: Color = Color(130);
 	const GIT_NOTSTAGED_FG: Color = Color(15);
-	const GIT_REPO_CLEAN_BG: Color = Color(148);
-	const GIT_REPO_CLEAN_FG: Color = Color(0);
+	const GIT_REPO_CLEAN_BG: Color = Color(240);
+	const GIT_REPO_CLEAN_FG: Color = Color(250);
 	const GIT_REPO_DIRTY_BG: Color = Color(161);
 	const GIT_REPO_DIRTY_FG: Color = Color(15);
 	const GIT_STAGED_BG: Color = Color(22);

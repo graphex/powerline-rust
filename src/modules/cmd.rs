@@ -14,7 +14,7 @@ pub trait CmdScheme {
 	const CMD_FAILED_BG: Color;
 	const CMD_FAILED_FG: Color;
 	const CMD_ROOT_SYMBOL: &'static str = "#";
-	const CMD_USER_SYMBOL: &'static str = "$";
+	const CMD_USER_SYMBOL: &'static str = "➤";
 }
 
 impl<S: CmdScheme> Cmd<S> {

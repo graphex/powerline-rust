@@ -9,27 +9,27 @@ pub fn run_git(path: &Path) -> R<super::GitStats> {
 
 	let mut status_options = StatusOptions::new();
 	status_options
-		.show(StatusShow::IndexAndWorkdir)
+		.show(StatusShow::Index)
 		.include_untracked(true)
 		.renames_from_rewrites(true)
 		.renames_head_to_index(true);
 
 	let (mut untracked, mut non_staged, mut conflicted, mut staged, mut ahead, mut behind) = (0, 0, 0, 0, 0, 0);
 
-	for status in repository.statuses(Some(&mut status_options))?.iter().map(|ref x| x.status()) {
-		if status.intersects(Status::INDEX_NEW | Status::INDEX_MODIFIED | Status::INDEX_TYPECHANGE | Status::INDEX_RENAMED | Status::INDEX_DELETED) {
-			staged += 1;
-		}
-		if status.is_wt_new() {
-			untracked += 1;
-		}
-		if status.is_conflicted() {
-			conflicted += 1;
-		}
-		if status.intersects(Status::WT_MODIFIED | Status::WT_TYPECHANGE | Status::WT_DELETED) {
-			non_staged += 1;
-		}
-	}
+//	for status in repository.statuses(Some(&mut status_options))?.iter().map(|ref x| x.status()) {
+//		if status.intersects(Status::INDEX_NEW | Status::INDEX_MODIFIED | Status::INDEX_TYPECHANGE | Status::INDEX_RENAMED | Status::INDEX_DELETED) {
+//			staged += 1;
+//		}
+//		if status.is_wt_new() {
+//			untracked += 1;
+//		}
+//		if status.is_conflicted() {
+//			conflicted += 1;
+//		}
+//		if status.intersects(Status::WT_MODIFIED | Status::WT_TYPECHANGE | Status::WT_DELETED) {
+//			non_staged += 1;
+//		}
+//	}
 
 	let active_branch: Option<Branch> = repository.branches(Some(BranchType::Local))?.filter_map(Result::ok).map(|x| x.0).find(|b| b.is_head());
 
